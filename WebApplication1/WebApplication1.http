@@ -1,0 +1,14 @@
+﻿@WebApplication1_HostAddress = http://localhost:5165
+
+POST {{WebApplication1_HostAddress}}/fruit/{6}
+Content-type: application/json
+
+{
+  "name":"strawberry",
+  "stock":19
+}
+###
+
+GET {{WebApplication1_HostAddress}}/fruit/{6}
+
+###

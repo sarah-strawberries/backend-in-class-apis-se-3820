@@ -1,0 +1,6 @@
+@APIWithf1db_HostAddress = http://localhost:5251
+
+GET {{APIWithf1db_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

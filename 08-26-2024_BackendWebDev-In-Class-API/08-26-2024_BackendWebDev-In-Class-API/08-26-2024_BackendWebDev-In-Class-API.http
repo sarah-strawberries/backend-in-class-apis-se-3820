@@ -1,0 +1,6 @@
+@_08_26_2024_BackendWebDev_In_Class_API_HostAddress = http://localhost:5008
+
+GET {{_08_26_2024_BackendWebDev_In_Class_API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
