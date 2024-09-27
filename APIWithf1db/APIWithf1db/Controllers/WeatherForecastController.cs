@@ -1,4 +1,6 @@
+using APIWithf1db.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIWithf1db.Controllers
 {
@@ -6,12 +8,9 @@ namespace APIWithf1db.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly ILogger<WeatherForecastController> _logger;
+       
+        private ILogger<WeatherForecastController> _logger;
+        private DbContext dbContext;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
@@ -19,15 +18,10 @@ namespace APIWithf1db.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<Circuit> Get(ILogger<WeatherForecastController logger, ClassSharedRoContext dbContext>)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            _logger = logger;
+            this.dbContext = dbContext;
         }
     }
 }
